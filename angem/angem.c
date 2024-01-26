@@ -1,20 +1,10 @@
+#include<angem.h>
 #include<math.h>
-
-typedef struct _Vector {
-	//double a[0];
-	double x;
-	double y;
-	double z;
-} Vector;
-
-typedef struct _Matrix {
-	size_t m;
-	size_t n;
-	double a[];
-} Matrix;
 
 #DEFINE NEWMTR(md,nd) (malloc(sizeof(Matrix)+sizeof(double)*(md)*(nd)))
 #DEFINE MTRIDX(mtr, id, jd) ((mtr)->a[(id)*((mtr)->n) + (jd)])
+
+
 
 Matrix* minor_matrix(Matrix* b, size_t md, size_t nd){
 	if(md>=b->m||nd>=b->n)return 0;
@@ -26,8 +16,6 @@ Matrix* minor_matrix(Matrix* b, size_t md, size_t nd){
 	}
 	return ret;
 }
-
-
 
 double determinant(Matrix* b){
 	if(b->m!=b->n)return 0;
@@ -46,11 +34,11 @@ double vector_module(Vector* b){
 	return sqrtd(scalar_multiply(b,b));
 }
 
-double
-
 double scalar_multiply(Vector* a, Vector* b){
 	return a->x*b->x + a->y*b->y + a->z*b->z;
 }
+
+
 
 
 
